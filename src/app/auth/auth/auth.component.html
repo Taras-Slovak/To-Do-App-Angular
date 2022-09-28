@@ -1,0 +1,67 @@
+<div class="auth">
+
+  <div class="auth__inner">
+
+    <h2 class="auth__title">Create Account</h2>
+    <p class="auth__txt">Let’s get productive together!</p>
+
+    <form class="auth__form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+      <div class="auth__from-group">
+
+        <div class="auth__form-item">
+          <label class="auth__form-label" for="full-name">Full Name * </label>
+          <input class="auth__form-input" id="full-name" type="text" formControlName="fullName" required>
+        </div>
+
+        <div class="auth__form-item">
+          <label class="auth__form-label" for="user-name">Username * </label>
+          <input class="auth__form-input" id="user-name" type="text" formControlName="userName" required>
+        </div>
+
+      </div>
+
+      <div class="auth__from-group">
+
+        <div class="auth__form-item">
+          <label class="auth__form-label" for="user-email">Email * </label>
+          <input class="auth__form-input" id="user-email" type="email" formControlName="userEmail" required>
+        </div>
+
+        <div class="auth__form-item">
+          <label class="auth__form-label" for="user-phone">Phone number * </label>
+          <input class="auth__form-input" id="user-phone" type="phone" formControlName="userPhone" required>
+        </div>
+
+      </div>
+
+      <div formGroupName="address">
+
+        <div class="auth__from-group">
+          <div class="auth__form-item">
+            <label class="auth__form-label" for="user-address">Address line *</label>
+            <input class="auth__form-input" id="user-address" type="text" formControlName="userAdress" required>
+          </div>
+          <div class="auth__form-item">
+            <label class="auth__form-label" for="user-suite">Suite </label>
+            <input class="auth__form-input" id="user-suite" type="number" formControlName="userSuite" required>
+          </div>
+        </div>
+
+        <div class="auth__from-group">
+          <div class="auth__form-item">
+            <label class="auth__form-label" for="user-address">City *</label>
+            <input class="auth__form-input" id="user-address" type="text" formControlName="userAdress" required>
+          </div>
+          <div class="auth__form-item">
+            <label class="auth__form-label" for="user-suite">ZIP Code *</label>
+            <input class="auth__form-input" id="user-suite" type="number" formControlName="userSuite" required>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="auth__form-button" type="submit" [disabled]="!profileForm.valid">Create Account</button>
+    </form>
+  </div>
+</div>
