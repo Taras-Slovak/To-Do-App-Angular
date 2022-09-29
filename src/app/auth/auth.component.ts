@@ -14,44 +14,46 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = this.fb.group({
-      fullName: ['',],
-      userName: [''],
-      userEmail: ['', Validators.email],
-      userPhone: [
+      name: ['',],
+      username: [''],
+      email: ['', Validators.email],
+      phone: [
         '', Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')
       ],
-      userAdress: ['',],
-      userSuite: [''],
-      userCity: ['', Validators.required],
-      userZIP: ['', Validators.required]
+      address: this.fb.group({
+        street: [''],
+        suite: [''],
+        city: ['', Validators.required],
+        zipcode: ['', Validators.required]
+      }),
     });
   }
-  get fullName() {
-    return this.profileForm.get('fullName')!;
+  get name() {
+    return this.profileForm.get('name')!;
   }
 
-  get userName() {
-    return this.profileForm.get('userName')!;
+  get username() {
+    return this.profileForm.get('username')!;
   }
-  get userEmail() {
-    return this.profileForm.get('userEmail')!;
-  }
-
-  get userPhone() {
-    return this.profileForm.get('userPhone')!;
+  get email() {
+    return this.profileForm.get('email')!;
   }
 
-  get userAdress() {
-    return this.profileForm.get('userAdress')!;
+  get phone() {
+    return this.profileForm.get('phone')!;
   }
-  get userSuite() {
-    return this.profileForm.get('userSuite')!;
+
+  get street() {
+    return this.profileForm.get('address.street')!;
   }
-  get userCity() {
-    return this.profileForm.get('userCity')!;
+  get suite() {
+    return this.profileForm.get('address.suite')!;
   }
-  get userZIP() {
-    return this.profileForm.get('userZIP')!;
+  get city() {
+    return this.profileForm.get('address.city')!;
+  }
+  get zipcode() {
+    return this.profileForm.get('address.zipcode')!;
   }
 
   onSubmit(form: FormGroup) {

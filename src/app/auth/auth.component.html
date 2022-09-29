@@ -10,31 +10,31 @@
       <div class="auth__from-group">
 
         <div class="auth__form-item">
-          <label class="auth__form-label" for="fullName">Full Name * </label>
-          <input class="{{fullName.invalid && (fullName.dirty || fullName.touched)?'alert-input':'auth__form-input'}}"
-            id="fullName" type="text" formControlName="fullName" minlength="4" required>
+          <label class="auth__form-label" for="name">Full Name * </label>
+          <input class="{{name.invalid && (name.dirty || name.touched)?'alert-input':'auth__form-input'}}" id="name"
+            type="text" formControlName="name" minlength="4" required>
 
-          <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="alert">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
 
-            <div *ngIf="fullName.errors?.['required']">
+            <div *ngIf="name.errors?.['required']">
               Full Name is required
             </div>
-            <div *ngIf="fullName.errors?.['minlength']">
+            <div *ngIf="name.errors?.['minlength']">
               Full Name must be at least 4 characters long
             </div>
           </div>
         </div>
 
         <div class="auth__form-item">
-          <label class="auth__form-label" for="userName">Username * </label>
-          <input class="{{userName.invalid && (userName.dirty || userName.touched)?'alert-input':'auth__form-input'}}"
-            id="userName" type="text" formControlName="userName" minlength="4" required>
+          <label class="auth__form-label" for="username">username * </label>
+          <input class="{{username.invalid && (username.dirty || username.touched)?'alert-input':'auth__form-input'}}"
+            id="username" type="text" formControlName="username" minlength="4" required>
 
-          <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert">
-            <div *ngIf="userName.errors?.['required']">
-              Username is required
+          <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert">
+            <div *ngIf="username.errors?.['required']">
+              username is required
             </div>
-            <div *ngIf="userName.errors?.['minlength']">
+            <div *ngIf="username.errors?.['minlength']">
               Full Name must be at least 4 characters long
             </div>
           </div>
@@ -43,16 +43,15 @@
 
       <div class="auth__from-group">
         <div class="auth__form-item">
-          <label class="auth__form-label" for="userEmail">Email * </label>
-          <input
-            class="{{userEmail.invalid && (userEmail.dirty || userEmail.touched)?'alert-input':'auth__form-input'}}"
-            id="userEmail" type="email" formControlName="userEmail" required>
+          <label class="auth__form-label" for="email">Email * </label>
+          <input class="{{email.invalid && (email.dirty || email.touched)?'alert-input':'auth__form-input'}}" id="email"
+            type="email" formControlName="email" required>
 
-          <div *ngIf="userEmail.invalid && (userEmail.dirty || userEmail.touched)" class="alert">
-            <div *ngIf="userEmail.errors?.['email']">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+            <div *ngIf="email.errors?.['email']">
               Please enter a valid email address
             </div>
-            <div *ngIf="userEmail.errors?.['required']">
+            <div *ngIf="email.errors?.['required']">
               Email is required
             </div>
           </div>
@@ -60,17 +59,16 @@
         </div>
 
         <div class="auth__form-item">
-          <label class="auth__form-label" for="userPhone">Phone number * </label>
-          <input
-            class="{{userPhone.invalid && (userPhone.dirty || userPhone.touched)?'alert-input':'auth__form-input'}}"
-            id="userPhone" type="phone" formControlName="userPhone" required>
+          <label class="auth__form-label" for="phone">Phone number * </label>
+          <input class="{{phone.invalid && (phone.dirty || phone.touched)?'alert-input':'auth__form-input'}}" id="phone"
+            type="phone" formControlName="phone" required>
 
-          <div *ngIf="userPhone.invalid && (userPhone.dirty || userPhone.touched)" class="alert">
-            <div *ngIf="userPhone.errors?.['required']">
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert">
+            <div *ngIf="phone.errors?.['required']">
               Phone number is required
             </div>
 
-            <div *ngIf="userPhone.errors?.['pattern']">
+            <div *ngIf="phone.errors?.['pattern']">
               Please enter a valid phone number
             </div>
           </div>
@@ -78,61 +76,65 @@
 
       </div>
 
-      <div class="auth__from-group">
-        <div class="auth__form-item">
-          <label class="auth__form-label" for="userAdress">Address line *</label>
-          <input
-            class="{{userAdress.invalid && (userAdress.dirty || userAdress.touched)?'alert-input':'auth__form-input'}}"
-            id="userAdress" type="text" formControlName="userAdress" minlength="4" required>
+      <div formGroupName="address">
 
-          <div *ngIf="userAdress.invalid && (userAdress.dirty || userAdress.touched)" class="alert">
-            <div *ngIf="userAdress.errors?.['required']">
-              Address line is required
+        <div class="auth__from-group">
+          <div class="auth__form-item">
+            <label class="auth__form-label" for="street">Address line *</label>
+            <input class="{{street.invalid && (street.dirty || street.touched)?'alert-input':'auth__form-input'}}"
+              id="street" type="text" formControlName="street" minlength="4" required>
+
+            <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert">
+              <div *ngIf="street.errors?.['required']">
+                Address line is required
+              </div>
+
+              <div *ngIf="street.errors?.['minlength']">
+                Address line must be at least 4 characters long
+              </div>
             </div>
 
-            <div *ngIf="userAdress.errors?.['minlength']">
-              Address line must be at least 4 characters long
+          </div>
+
+          <div class="auth__form-item auth__user-suite">
+            <label class="auth__form-label" for="suite">Suite</label>
+            <input class="auth__form-input" id="suite" type="number" formControlName="suite">
+          </div>
+        </div>
+
+        <div class="auth__from-group">
+          <div class="auth__form-item">
+            <label class="auth__form-label" for="city">City *</label>
+            <input class="{{city.invalid && (city.dirty || city.touched)?'alert-input':'auth__form-input'}}" id="city"
+              type="text" formControlName="city" minlength="3" required>
+            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert">
+              <div *ngIf="city.errors?.['required']">
+                City is required
+              </div>
+
+              <div *ngIf="city.errors?.['minlength']">
+                City must be at least 3 characters long
+              </div>
+            </div>
+
+          </div>
+          <div class="auth__form-item">
+            <label class="auth__form-label" for="zipcodee">ZIP Code *</label>
+            <input class="{{zipcode.invalid && (zipcode.dirty || zipcode.touched)?'alert-input':'auth__form-input'}}"
+              id="zipcode" type="number" formControlName="zipcode" required>
+
+            <div *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)" class="alert">
+              <div *ngIf="zipcode.errors?.['required']">
+                ZIP Code is required
+              </div>
             </div>
           </div>
 
         </div>
 
-        <div class="auth__form-item auth__user-suite">
-          <label class="auth__form-label" for="userSuite">Suite</label>
-          <input class="auth__form-input" id="userSuite" type="number" formControlName="userSuite">
-        </div>
       </div>
 
-      <div class="auth__from-group">
-        <div class="auth__form-item">
-          <label class="auth__form-label" for="userCity">City *</label>
-          <input class="{{userCity.invalid && (userCity.dirty || userCity.touched)?'alert-input':'auth__form-input'}}"
-            id="userCity" type="text" formControlName="userCity" minlength="3" required>
-          <div *ngIf="userCity.invalid && (userCity.dirty || userCity.touched)" class="alert">
-            <div *ngIf="userCity.errors?.['required']">
-              City is required
-            </div>
 
-            <div *ngIf="userCity.errors?.['minlength']">
-              City must be at least 3 characters long
-            </div>
-          </div>
-
-        </div>
-        <div class="auth__form-item">
-          <label class="auth__form-label" for="userZIPe">ZIP Code *</label>
-          <input class="{{userZIP.invalid && (userZIP.dirty || userZIP.touched)?'alert-input':'auth__form-input'}}"
-            id="userZIP" type="number" formControlName="userZIP" required>
-
-          <div *ngIf="userZIP.invalid && (userZIP.dirty || userZIP.touched)" class="alert">
-            <div *ngIf="userZIP.errors?.['required']">
-              ZIP Code is required
-            </div>
-          </div>
-        </div>
-
-
-      </div>
       <button class="{{profileForm.valid?'auth__form-button':'btn-disabled'}}" type="submit"
         [disabled]="!profileForm.valid">
         <p>Create Account</p>
