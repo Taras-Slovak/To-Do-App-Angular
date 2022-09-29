@@ -1,7 +1,6 @@
+import { SingUp } from './../models/sign-up.model';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -10,26 +9,50 @@ import { FormArray } from '@angular/forms';
 })
 export class AuthComponent implements OnInit {
 
+  profileForm: FormGroup;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.profileForm = this.fb.group({
+      fullName: ['', Validators.required, Validators.minLength(4)],
+      userName: ['', Validators.required],
+      userEmail: ['', Validators.required, Validators.email],
+      userPhone: ['', Validators.required],
+      address: this.fb.group({
+        userAdress: ['', Validators.required],
+        userSuite: [''],
+        userCity: ['', Validators.required],
+        userZIP: ['', Validators.required]
+      })
+    });
   }
-  profileForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: [''],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: ['']
-    }),
-    aliases: this.fb.array([
-      this.fb.control('')
-    ])
-  });
+  get fullName() {
+    return this.profileForm.get('fullName')!;
+  }
 
-  public onSubmit() {
-    console.log(this.profileForm);
+  get userName() {
+    return this.profileForm.get('userName')!;
+  }
+  get userEmail() {
+    return this.profileForm.get('userEmail')!;
+  }
+  get userAdress() {
+    return this.profileForm.get('userAdress')!;
+  }
+  get userSuite() {
+    return this.profileForm.get('userSuite')!;
+  }
+  get userCity() {
+    return this.profileForm.get('userCity')!;
+  }
+  get userZIP() {
+    return this.profileForm.get('userZIP')!;
+  }
+
+
+
+  onSubmit(form: FormGroup) {
+
   }
 
 }

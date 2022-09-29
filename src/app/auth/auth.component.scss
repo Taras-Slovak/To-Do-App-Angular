@@ -106,9 +106,9 @@
     outline: none;
   }
 }
-.invald {
+.alert {
+  color: #e39735;
+
   &:focus {
-    border-color: #e39735;
-    outline: none;
   }
 }

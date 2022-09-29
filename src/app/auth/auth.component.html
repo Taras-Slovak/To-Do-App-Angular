@@ -5,18 +5,28 @@
     <h2 class="auth__title">Create Account</h2>
     <p class="auth__txt">Let’s get productive together!</p>
 
-    <form class="auth__form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <form class="auth__form" [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm)">
 
       <div class="auth__from-group">
 
         <div class="auth__form-item">
-          <label class="auth__form-label" for="full-name">Full Name * </label>
-          <input class="auth__form-input" id="full-name" type="text" formControlName="fullName" required>
+          <label class="auth__form-label" for="fullName">Full Name * </label>
+          <input class="auth__form-input" id="fullName" type="text" formControlName="fullName" minlength="4" required>
+
+          <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="alert">
+
+            <div *ngIf="fullName.errors?.['required']">
+              Full Name is required.
+            </div>
+            <div *ngIf="fullName.errors?.['minlength']">
+              Full Name must be at least 4 characters long.
+            </div>
+          </div>
         </div>
 
         <div class="auth__form-item">
-          <label class="auth__form-label" for="user-name">Username * </label>
-          <input class="auth__form-input" id="user-name" type="text" formControlName="userName" required>
+          <label class="auth__form-label" for="userName">Username * </label>
+          <input class="auth__form-input" id="userName" type="text" formControlName="userName" required>
         </div>
 
       </div>
@@ -24,13 +34,13 @@
       <div class="auth__from-group">
 
         <div class="auth__form-item">
-          <label class="auth__form-label" for="user-email">Email * </label>
-          <input class="auth__form-input" id="user-email" type="email" formControlName="userEmail" required>
+          <label class="auth__form-label" for="userEmail">Email * </label>
+          <input class="auth__form-input" id="userEmail" type="email" formControlName="userEmail" required>
         </div>
 
         <div class="auth__form-item">
-          <label class="auth__form-label" for="user-phone">Phone number * </label>
-          <input class="auth__form-input" id="user-phone" type="phone" formControlName="userPhone" required>
+          <label class="auth__form-label" for="userPhone">Phone number * </label>
+          <input class="auth__form-input" id="userPhone" type="phone" formControlName="userPhone" required>
         </div>
 
       </div>
@@ -39,23 +49,23 @@
 
         <div class="auth__from-group">
           <div class="auth__form-item">
-            <label class="auth__form-label" for="user-address">Address line *</label>
-            <input class="auth__form-input" id="user-address" type="text" formControlName="userAdress" required>
+            <label class="auth__form-label" for="userAdress">Address line *</label>
+            <input class="auth__form-input" id="userAdress" type="text" formControlName="userAdress" required>
           </div>
           <div class="auth__form-item">
-            <label class="auth__form-label" for="user-suite">Suite </label>
-            <input class="auth__form-input" id="user-suite" type="number" formControlName="userSuite" required>
+            <label class="auth__form-label" for="userSuite">Suite </label>
+            <input class="auth__form-input" id="userSuite" type="number" formControlName="userSuite">
           </div>
         </div>
 
         <div class="auth__from-group">
           <div class="auth__form-item">
-            <label class="auth__form-label" for="user-address">City *</label>
-            <input class="auth__form-input" id="user-address" type="text" formControlName="userAdress" required>
+            <label class="auth__form-label" for="userCity">City *</label>
+            <input class="auth__form-input" id="userCity" type="text" formControlName="userCity" required>
           </div>
           <div class="auth__form-item">
-            <label class="auth__form-label" for="user-suite">ZIP Code *</label>
-            <input class="auth__form-input" id="user-suite" type="number" formControlName="userSuite" required>
+            <label class="auth__form-label" for="userZIPe">ZIP Code *</label>
+            <input class="auth__form-input" id="userZIP" type="number" formControlName="userZIP" required>
           </div>
         </div>
 
