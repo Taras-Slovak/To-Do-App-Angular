@@ -14,16 +14,16 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = this.fb.group({
-      fullName: ['', Validators.required, Validators.minLength(4)],
-      userName: ['', Validators.required],
-      userEmail: ['', Validators.required, Validators.email],
-      userPhone: ['', Validators.required],
-      address: this.fb.group({
-        userAdress: ['', Validators.required],
-        userSuite: [''],
-        userCity: ['', Validators.required],
-        userZIP: ['', Validators.required]
-      })
+      fullName: ['',],
+      userName: [''],
+      userEmail: ['', Validators.email],
+      userPhone: [
+        '', Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')
+      ],
+      userAdress: ['',],
+      userSuite: [''],
+      userCity: ['', Validators.required],
+      userZIP: ['', Validators.required]
     });
   }
   get fullName() {
@@ -36,6 +36,11 @@ export class AuthComponent implements OnInit {
   get userEmail() {
     return this.profileForm.get('userEmail')!;
   }
+
+  get userPhone() {
+    return this.profileForm.get('userPhone')!;
+  }
+
   get userAdress() {
     return this.profileForm.get('userAdress')!;
   }
@@ -49,12 +54,9 @@ export class AuthComponent implements OnInit {
     return this.profileForm.get('userZIP')!;
   }
 
-
-
   onSubmit(form: FormGroup) {
-
+    console.log(form.value)
   }
-
 }
 
 
